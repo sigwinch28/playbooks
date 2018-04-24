@@ -1,0 +1,6 @@
+---
+- name: Install scrot
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ scrot_pkgs }}"

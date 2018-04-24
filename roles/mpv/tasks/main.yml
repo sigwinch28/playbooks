@@ -1,0 +1,6 @@
+---
+- name: Install mpv
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ mpv_pkgs }}"

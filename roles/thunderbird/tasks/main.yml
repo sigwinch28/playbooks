@@ -1,0 +1,6 @@
+---
+- name: Install Thunderbird
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ thunderbird_pkgs }}"

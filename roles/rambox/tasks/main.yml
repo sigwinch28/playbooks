@@ -1,0 +1,10 @@
+---
+- name: Check whether rambox is installed
+  stat:
+    path: "{{ rambox_bin }}"
+  register: rambox_installed
+  
+- name: Install Rambox
+  apt:
+    deb: "{{ rambox_deb_url }}"
+  when: rambox_installed.stat.exists == False

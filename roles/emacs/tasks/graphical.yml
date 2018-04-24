@@ -1,0 +1,16 @@
+---
+- name: Install emacs
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ emacs_pkgs }}"
+
+- name: Install emacs daemon user service
+  template:
+    src: emacs.service.j2
+    dest: /etc/systemd/user/emacs.service
+
+- name: Install emacs client application entry
+  template:
+    src: emacsclient25.desktop.j2
+    dest: /usr/share/applications/emacs25client.desktop

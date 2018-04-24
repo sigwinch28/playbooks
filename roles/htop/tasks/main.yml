@@ -1,0 +1,6 @@
+---
+- name: Install htop
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ htop_pkgs }}"

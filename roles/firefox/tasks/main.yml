@@ -1,0 +1,31 @@
+---
+- name: Create firefox installation directory
+  file:
+    path: "{{ firefox_dir }}"
+    state: directory
+
+- name: Delete firefox for upgrade
+  file:
+    state: absent
+    path: "{{ firefox_dir }}"
+  when: firefox_update==True
+
+- name: Extract firefox
+  unarchive:
+    src: https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-GB
+    dest: "{{ firefox_dir }}"
+    remote_src: yes
+    extra_opts: "--strip-components=1"
+    creates: "{{ firefox_dir }}/firefox"
+  
+- name: Create firefox symlink
+  file:
+    src: "{{ firefox_dir }}/firefox"
+    dest: "{{ firefox_bin }}"
+    state: link
+
+- name: Create firefox application entry
+  template:
+    src: firefox.desktop.j2
+    dest: /usr/share/applications/firefox.desktop
+    

@@ -1,0 +1,6 @@
+---
+emacs_pkgs:
+  - emacs25
+emacs_bin: /usr/bin/emacs25
+emacs_client_bin: /usr/bin/emacsclient.emacs25
+emacs_icon: emacs25

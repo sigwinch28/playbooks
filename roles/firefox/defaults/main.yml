@@ -1,0 +1,5 @@
+---
+firefox_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-GB"
+firefox_dir: /opt/firefox
+firefox_bin: /usr/local/bin/firefox
+firefox_update: false

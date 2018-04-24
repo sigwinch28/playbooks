@@ -1,0 +1,7 @@
+---
+- name: Install emacs nox
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ emacs_nox_pkgs }}"
+

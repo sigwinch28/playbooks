@@ -1,0 +1,12 @@
+---
+- hosts: desktops
+  become: yes
+  roles:
+  - emacs
+  - firefox
+  - kde
+  - mpv
+  - rambox
+  - scrot
+  - spotify
+  - thunderbird

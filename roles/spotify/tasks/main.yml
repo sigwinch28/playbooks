@@ -1,0 +1,23 @@
+---
+- name: Add spotify package key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+  register: spotify_key
+
+- name: Add spotify repository
+  apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    filename: spotify
+  register: spotify_repo
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  when: spotify_key.changed or spotify_repo.changed
+
+- name: Install spotify
+  apt:
+    name: spotify-client
+    state: latest
+  

@@ -1,0 +1,5 @@
+---
+- include: graphical.yml
+  when: graphical
+- include: nox.yml
+  when: not graphical
