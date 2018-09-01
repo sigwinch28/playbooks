@@ -1,14 +1,14 @@
 ---
-- name: Create firefox installation directory
-  file:
-    path: "{{ firefox_dir }}"
-    state: directory
-
 - name: Delete firefox for upgrade
   file:
     state: absent
     path: "{{ firefox_dir }}"
   when: firefox_update==True
+
+- name: Create firefox installation directory
+  file:
+    path: "{{ firefox_dir }}"
+    state: directory
 
 - name: Extract firefox
   unarchive:
